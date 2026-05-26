@@ -20,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
-
 import com.github.devnied.emvnfccard.iso7816emv.ITag;
 import com.github.devnied.emvnfccard.model.CPLC;
 import com.github.devnied.emvnfccard.model.EmvTransactionRecord;
@@ -28,93 +27,90 @@ import com.github.devnied.emvnfccard.parser.apdu.IFile;
 
 /**
  * Class used to manage all annotation
- * 
+ *
  * @author MILLAU Julien
- * 
  */
 public final class AnnotationUtils {
 
-	/**
-	 * List of annoted class
-	 */
-	@SuppressWarnings("unchecked")
-	private static final Class<? extends IFile>[] LISTE_CLASS = new Class[] { EmvTransactionRecord.class, CPLC.class };
+    /**
+     * List of annoted class
+     */
+    @SuppressWarnings("unchecked")
+    private static final Class<? extends IFile>[] LISTE_CLASS = new Class[] { EmvTransactionRecord.class, CPLC.class };
 
-	/**
-	 * AnnotationUtils singleton
-	 */
-	private static final AnnotationUtils INSTANCE = new AnnotationUtils();
+    /**
+     * AnnotationUtils singleton
+     */
+    private static final AnnotationUtils INSTANCE = new AnnotationUtils();
 
-	/**
-	 * Method to get the unique instance of the class
-	 * 
-	 * @return AnnotationUtils instance
-	 */
-	public static AnnotationUtils getInstance() {
-		return INSTANCE;
-	}
+    /**
+     * Method to get the unique instance of the class
+     *
+     * @return AnnotationUtils instance
+     */
+    public static AnnotationUtils getInstance() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Map which contain
-	 */
-	private final Map<String, Map<ITag, AnnotationData>> map;
-	private final Map<String, Set<AnnotationData>> mapSet;
+    /**
+     * Map which contain
+     */
+    private final Map<String, Map<ITag, AnnotationData>> map;
 
-	/**
-	 * Private default constructor
-	 */
-	private AnnotationUtils() {
-		map = new HashMap<String, Map<ITag, AnnotationData>>();
-		mapSet = new HashMap<String, Set<AnnotationData>>();
-		extractAnnotation();
-	}
+    private final Map<String, Set<AnnotationData>> mapSet;
 
-	/**
-	 * Method to extract all annotation information and store them in the map
-	 */
-	private void extractAnnotation() {
-		for (Class<? extends IFile> clazz : LISTE_CLASS) {
+    /**
+     * Private default constructor
+     */
+    private AnnotationUtils() {
+        map = new HashMap<String, Map<ITag, AnnotationData>>();
+        mapSet = new HashMap<String, Set<AnnotationData>>();
+        extractAnnotation();
+    }
 
-			Map<ITag, AnnotationData> maps = new HashMap<ITag, AnnotationData>();
-			Set<AnnotationData> set = new TreeSet<AnnotationData>();
+    /**
+     * Method to extract all annotation information and store them in the map
+     */
+    private void extractAnnotation() {
+        for (Class<? extends IFile> clazz : LISTE_CLASS) {
+            Map<ITag, AnnotationData> maps = new HashMap<ITag, AnnotationData>();
+            Set<AnnotationData> set = new TreeSet<AnnotationData>();
+            Field[] fields = clazz.getDeclaredFields();
+            for (Field field : fields) {
+                AnnotationData param = new AnnotationData();
+                field.setAccessible(true);
+                param.setField(field);
+                Data annotation = field.getAnnotation(Data.class);
+                if (annotation != null) {
+                    param.initFromAnnotation(annotation);
+                    maps.put(param.getTag(), param);
+                    try {
+                        set.add((AnnotationData) param.clone());
+                    } catch (CloneNotSupportedException e) {
+                        // do nothing
+                    }
+                }
+            }
+            mapSet.put(clazz.getName(), set);
+            map.put(clazz.getName(), maps);
+        }
+    }
 
-			Field[] fields = clazz.getDeclaredFields();
-			for (Field field : fields) {
-				AnnotationData param = new AnnotationData();
-				field.setAccessible(true);
-				param.setField(field);
-				Data annotation = field.getAnnotation(Data.class);
-				if (annotation != null) {
-					param.initFromAnnotation(annotation);
-					maps.put(param.getTag(), param);
-					try {
-						set.add((AnnotationData) param.clone());
-					} catch (CloneNotSupportedException e) {
-						// do nothing
-					}
-				}
-			}
-			mapSet.put(clazz.getName(), set);
-			map.put(clazz.getName(), maps);
-		}
-	}
+    /**
+     * Getter map set
+     *
+     * @return the map
+     */
+    public Map<String, Set<AnnotationData>> getMapSet() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Getter map set
-	 * 
-	 * @return the map
-	 */
-	public Map<String, Set<AnnotationData>> getMapSet() {
-		return mapSet;
-	}
-
-	/**
-	 * Getter map
-	 * 
-	 * @return the map
-	 */
-	public Map<String, Map<ITag, AnnotationData>> getMap() {
-		return map;
-	}
-
+    /**
+     * Getter map
+     *
+     * @return the map
+     */
+    public Map<String, Map<ITag, AnnotationData>> getMap() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

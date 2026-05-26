@@ -17,106 +17,104 @@ package com.github.devnied.emvnfccard.model;
 
 /**
  * Class used to describe Application file locator
- * 
+ *
  * @author MILLAU Julien
- * 
  */
 public class Afl {
 
-	/**
-	 * SFI
-	 */
-	private int sfi;
+    /**
+     * SFI
+     */
+    private int sfi;
 
-	/**
-	 * record
-	 */
-	private int firstRecord;
+    /**
+     * record
+     */
+    private int firstRecord;
 
-	/**
-	 * Last record
-	 */
-	private int lastRecord;
+    /**
+     * Last record
+     */
+    private int lastRecord;
 
-	/**
-	 * Offline authentication
-	 */
-	private boolean offlineAuthentication;
+    /**
+     * Offline authentication
+     */
+    private boolean offlineAuthentication;
 
-	/**
-	 * Method used to get the field sfi
-	 * 
-	 * @return the sfi
-	 */
-	public int getSfi() {
-		return sfi;
-	}
+    /**
+     * Method used to get the field sfi
+     *
+     * @return the sfi
+     */
+    public int getSfi() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field sfi
-	 * 
-	 * @param sfi
-	 *            the sfi to set
-	 */
-	public void setSfi(final int sfi) {
-		this.sfi = sfi;
-	}
+    /**
+     * Setter for the field sfi
+     *
+     * @param sfi
+     *            the sfi to set
+     */
+    public void setSfi(final int sfi) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field firstRecord
-	 * 
-	 * @return the firstRecord
-	 */
-	public int getFirstRecord() {
-		return firstRecord;
-	}
+    /**
+     * Method used to get the field firstRecord
+     *
+     * @return the firstRecord
+     */
+    public int getFirstRecord() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field firstRecord
-	 * 
-	 * @param firstRecord
-	 *            the firstRecord to set
-	 */
-	public void setFirstRecord(final int firstRecord) {
-		this.firstRecord = firstRecord;
-	}
+    /**
+     * Setter for the field firstRecord
+     *
+     * @param firstRecord
+     *            the firstRecord to set
+     */
+    public void setFirstRecord(final int firstRecord) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field lastRecord
-	 * 
-	 * @return the lastRecord
-	 */
-	public int getLastRecord() {
-		return lastRecord;
-	}
+    /**
+     * Method used to get the field lastRecord
+     *
+     * @return the lastRecord
+     */
+    public int getLastRecord() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field lastRecord
-	 * 
-	 * @param lastRecord
-	 *            the lastRecord to set
-	 */
-	public void setLastRecord(final int lastRecord) {
-		this.lastRecord = lastRecord;
-	}
+    /**
+     * Setter for the field lastRecord
+     *
+     * @param lastRecord
+     *            the lastRecord to set
+     */
+    public void setLastRecord(final int lastRecord) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field offlineAuthentication
-	 * 
-	 * @return the offlineAuthentication
-	 */
-	public boolean isOfflineAuthentication() {
-		return offlineAuthentication;
-	}
+    /**
+     * Method used to get the field offlineAuthentication
+     *
+     * @return the offlineAuthentication
+     */
+    public boolean isOfflineAuthentication() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field offlineAuthentication
-	 * 
-	 * @param offlineAuthentication
-	 *            the offlineAuthentication to set
-	 */
-	public void setOfflineAuthentication(final boolean offlineAuthentication) {
-		this.offlineAuthentication = offlineAuthentication;
-	}
-
+    /**
+     * Setter for the field offlineAuthentication
+     *
+     * @param offlineAuthentication
+     *            the offlineAuthentication to set
+     */
+    public void setOfflineAuthentication(final boolean offlineAuthentication) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

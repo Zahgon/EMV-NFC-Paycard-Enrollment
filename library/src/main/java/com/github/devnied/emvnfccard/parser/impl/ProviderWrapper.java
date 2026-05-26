@@ -25,39 +25,29 @@ import com.github.devnied.emvnfccard.utils.ResponseUtils;
 /**
  * Wrapper for IProvider
  * @author MILLAU Julien
- *
  */
-public class ProviderWrapper implements IProvider{
+public class ProviderWrapper implements IProvider {
 
-	/**
-	 * Provider
-	 */
-	private final IProvider provider;
+    /**
+     * Provider
+     */
+    private final IProvider provider;
 
-	/**
-	 * Constructor
-	 * @param pProvider provider
-	 */
-	public ProviderWrapper(IProvider pProvider) {
-		provider = pProvider;
-	}
+    /**
+     * Constructor
+     * @param pProvider provider
+     */
+    public ProviderWrapper(IProvider pProvider) {
+        provider = pProvider;
+    }
 
-	@Override
-	public byte[] transceive(byte[] pCommand) throws CommunicationException {
-		byte[] ret = provider.transceive(pCommand);
-		// If LE is not correct
-		if (ResponseUtils.isEquals(ret, SwEnum.SW_6C)) {
-			pCommand[pCommand.length - 1] = ret[ret.length - 1];
-			ret = provider.transceive(pCommand);
-		} else if (ResponseUtils.isEquals(ret, SwEnum.SW_61)) { // Perform get response command
-			ret = provider.transceive(new CommandApdu(CommandEnum.GET_RESPONSE, null, ret[ret.length - 1]).toBytes());
-		}
-		return ret;
-	}
+    @Override
+    public byte[] transceive(byte[] pCommand) throws CommunicationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	@Override
-	public byte[] getAt() {
-		return provider.getAt();
-	}
-
+    @Override
+    public byte[] getAt() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

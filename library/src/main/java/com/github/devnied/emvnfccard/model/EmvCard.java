@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
-
 import com.github.devnied.emvnfccard.enums.EmvCardScheme;
 import com.github.devnied.emvnfccard.model.enums.CardStateEnum;
 
@@ -27,334 +26,310 @@ import com.github.devnied.emvnfccard.model.enums.CardStateEnum;
  * Bean used to describe data in EMV card
  *
  * @author MILLAU Julien
- *
  */
 public class EmvCard extends AbstractData {
 
-	/**
-	 * Generated serial UID
-	 */
-	private static final long serialVersionUID = 736740432469989941L;
+    /**
+     * Generated serial UID
+     */
+    private static final long serialVersionUID = 736740432469989941L;
 
-	/**
-	 * CPLC data
-	 */
-	private CPLC cplc;
-	
-	/**
-	 * Holder Lastname
-	 */
-	private String holderLastname;
+    /**
+     * CPLC data
+     */
+    private CPLC cplc;
 
-	/**
-	 * Holder Firstname
-	 */
-	private String holderFirstname;
+    /**
+     * Holder Lastname
+     */
+    private String holderLastname;
 
-	/**
-	 * Card type
-	 */
-	private EmvCardScheme type;
-	
-	/**
-	 * Card ATS (contact less) or ATR
-	 */
-	private String at;
+    /**
+     * Holder Firstname
+     */
+    private String holderFirstname;
 
-	/**
-	 * List of Atr description
-	 */
-	private Collection<String> atrDescription;
+    /**
+     * Card type
+     */
+    private EmvCardScheme type;
 
-	/**
-	 * Track 2 data
-	 */
-	private EmvTrack2 track2;
+    /**
+     * Card ATS (contact less) or ATR
+     */
+    private String at;
 
-	/**
-	 * Track 1 data
-	 */
-	private EmvTrack1 track1;
+    /**
+     * List of Atr description
+     */
+    private Collection<String> atrDescription;
 
-	/**
-	 * BIC - Bank Identifier Code
-	 */
-	private String bic;
+    /**
+     * Track 2 data
+     */
+    private EmvTrack2 track2;
 
-	/**
-	 * IBAN - International Bank Account Number
-	 */
-	private String iban;
+    /**
+     * Track 1 data
+     */
+    private EmvTrack1 track1;
 
-	/**
-	 * Application list
-	 */
-	private final List<Application> applications = new ArrayList<Application>();
+    /**
+     * BIC - Bank Identifier Code
+     */
+    private String bic;
 
-	/**
-	 * Card state
-	 */
-	private CardStateEnum state = CardStateEnum.UNKNOWN;
+    /**
+     * IBAN - International Bank Account Number
+     */
+    private String iban;
 
-	/**
-	 * Method used to get the field holderLastname
-	 *
-	 * @return the holderLastname
-	 */
-	public String getHolderLastname() {
-		String ret = holderLastname;
-		if (ret == null && track1 != null) {
-			ret = track1.getHolderLastname();
-		}
-		return ret;
-	}
+    /**
+     * Application list
+     */
+    private final List<Application> applications = new ArrayList<Application>();
 
-	/**
-	 * Setter for the field holderLastname
-	 *
-	 * @param holderLastname
-	 *            the holderLastname to set
-	 */
-	public void setHolderLastname(final String holderLastname) {
-		this.holderLastname = holderLastname;
-	}
+    /**
+     * Card state
+     */
+    private CardStateEnum state = CardStateEnum.UNKNOWN;
 
-	/**
-	 * Method used to get the field holderFirstname
-	 *
-	 * @return the holderFirstname
-	 */
-	public String getHolderFirstname() {
-		String ret = holderFirstname;
-		if (ret == null && track1 != null) {
-			ret = track1.getHolderFirstname();
-		}
-		return ret;
-	}
+    /**
+     * Method used to get the field holderLastname
+     *
+     * @return the holderLastname
+     */
+    public String getHolderLastname() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field holderFirstname
-	 *
-	 * @param holderFirstname
-	 *            the holderFirstname to set
-	 */
-	public void setHolderFirstname(final String holderFirstname) {
-		this.holderFirstname = holderFirstname;
-	}
+    /**
+     * Setter for the field holderLastname
+     *
+     * @param holderLastname
+     *            the holderLastname to set
+     */
+    public void setHolderLastname(final String holderLastname) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field cardNumber
-	 *
-	 * @return the cardNumber
-	 */
-	public String getCardNumber() {
-		String ret = null;
-		if (track2 != null) {
-			ret = track2.getCardNumber();
-		}
-		if (ret == null && track1 != null) {
-			ret = track1.getCardNumber();
-		}
-		return ret;
-	}
+    /**
+     * Method used to get the field holderFirstname
+     *
+     * @return the holderFirstname
+     */
+    public String getHolderFirstname() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field expireDate
-	 *
-	 * @return the expireDate
-	 */
-	public Date getExpireDate() {
-		Date ret = null;
-		if (track2 != null) {
-			ret = track2.getExpireDate();
-		}
-		if (ret == null && track1 != null) {
-			ret = track1.getExpireDate();
-		}
-		return ret;
-	}
+    /**
+     * Setter for the field holderFirstname
+     *
+     * @param holderFirstname
+     *            the holderFirstname to set
+     */
+    public void setHolderFirstname(final String holderFirstname) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field type
-	 *
-	 * @return the type
-	 */
-	public EmvCardScheme getType() {
-		return type;
-	}
+    /**
+     * Method used to get the field cardNumber
+     *
+     * @return the cardNumber
+     */
+    public String getCardNumber() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field type
-	 *
-	 * @param type
-	 *            the type to set
-	 */
-	public void setType(final EmvCardScheme type) {
-		this.type = type;
-	}
+    /**
+     * Method used to get the field expireDate
+     *
+     * @return the expireDate
+     */
+    public Date getExpireDate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	@Override
-	public boolean equals(final Object arg0) {
-		return arg0 instanceof EmvCard && getCardNumber() != null && getCardNumber().equals(((EmvCard) arg0).getCardNumber());
-	}
+    /**
+     * Method used to get the field type
+     *
+     * @return the type
+     */
+    public EmvCardScheme getType() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field atrDescription
-	 *
-	 * @return the atrDescription
-	 */
-	public Collection<String> getAtrDescription() {
-		return atrDescription;
-	}
+    /**
+     * Setter for the field type
+     *
+     * @param type
+     *            the type to set
+     */
+    public void setType(final EmvCardScheme type) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field atrDescription
-	 *
-	 * @param atrDescription
-	 *            the atrDescription to set
-	 */
-	public void setAtrDescription(final Collection<String> atrDescription) {
-		this.atrDescription = atrDescription;
-	}
-	
-	/**
-	 * Method used to get the field at
-	 *
-	 * @return the at value
-	 */
-	public String getAt() {
-		return at;
-	}
+    @Override
+    public boolean equals(final Object arg0) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field at
-	 *
-	 * @param atr
-	 *            the at value to set
-	 */
-	public void setAt(final String at) {
-		this.at = at;
-	}
+    /**
+     * Method used to get the field atrDescription
+     *
+     * @return the atrDescription
+     */
+    public Collection<String> getAtrDescription() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field state
-	 *
-	 * @return the state
-	 */
-	public CardStateEnum getState() {
-		return state;
-	}
+    /**
+     * Setter for the field atrDescription
+     *
+     * @param atrDescription
+     *            the atrDescription to set
+     */
+    public void setAtrDescription(final Collection<String> atrDescription) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field state
-	 *
-	 * @param state
-	 *            the state to set
-	 */
-	public void setState(final CardStateEnum state) {
-		this.state = state;
-	}
+    /**
+     * Method used to get the field at
+     *
+     * @return the at value
+     */
+    public String getAt() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field track2
-	 *
-	 * @return the track2
-	 */
-	public EmvTrack2 getTrack2() {
-		return track2;
-	}
+    /**
+     * Setter for the field at
+     *
+     * @param atr
+     *            the at value to set
+     */
+    public void setAt(final String at) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field track2
-	 *
-	 * @param track2
-	 *            the track2 to set
-	 */
-	public void setTrack2(final EmvTrack2 track2) {
-		this.track2 = track2;
-	}
+    /**
+     * Method used to get the field state
+     *
+     * @return the state
+     */
+    public CardStateEnum getState() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field track1
-	 *
-	 * @return the track1
-	 */
-	public EmvTrack1 getTrack1() {
-		return track1;
-	}
+    /**
+     * Setter for the field state
+     *
+     * @param state
+     *            the state to set
+     */
+    public void setState(final CardStateEnum state) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field track1
-	 *
-	 * @param track1
-	 *            the track1 to set
-	 */
-	public void setTrack1(final EmvTrack1 track1) {
-		this.track1 = track1;
-	}
+    /**
+     * Method used to get the field track2
+     *
+     * @return the track2
+     */
+    public EmvTrack2 getTrack2() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field bic
-	 *
-	 * @return the bic
-	 */
-	public String getBic() {
-		return bic;
-	}
+    /**
+     * Setter for the field track2
+     *
+     * @param track2
+     *            the track2 to set
+     */
+    public void setTrack2(final EmvTrack2 track2) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field bic
-	 *
-	 * @param bic
-	 *            the bic to set
-	 */
-	public void setBic(final String bic) {
-		this.bic = bic;
-	}
+    /**
+     * Method used to get the field track1
+     *
+     * @return the track1
+     */
+    public EmvTrack1 getTrack1() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field iban
-	 *
-	 * @return the iban
-	 */
-	public String getIban() {
-		return iban;
-	}
+    /**
+     * Setter for the field track1
+     *
+     * @param track1
+     *            the track1 to set
+     */
+    public void setTrack1(final EmvTrack1 track1) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field iban
-	 *
-	 * @param iban
-	 *            the iban to set
-	 */
-	public void setIban(final String iban) {
-		this.iban = iban;
-	}
+    /**
+     * Method used to get the field bic
+     *
+     * @return the bic
+     */
+    public String getBic() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to get the field applications
-	 *
-	 * @return the applications
-	 */
-	public List<Application> getApplications() {
-		return applications;
-	}
+    /**
+     * Setter for the field bic
+     *
+     * @param bic
+     *            the bic to set
+     */
+    public void setBic(final String bic) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Get the field cplc
-	 * @return the cplc
-	 */
-	public CPLC getCplc() {
-		return cplc;
-	}
+    /**
+     * Method used to get the field iban
+     *
+     * @return the iban
+     */
+    public String getIban() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Setter for the field cplc
-	 *
-	 * @param cplc the cplc to set
-	 */
-	public void setCplc(CPLC cplc) {
-		this.cplc = cplc;
-	}
-	
+    /**
+     * Setter for the field iban
+     *
+     * @param iban
+     *            the iban to set
+     */
+    public void setIban(final String iban) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Method used to get the field applications
+     *
+     * @return the applications
+     */
+    public List<Application> getApplications() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Get the field cplc
+     * @return the cplc
+     */
+    public CPLC getCplc() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Setter for the field cplc
+     *
+     * @param cplc the cplc to set
+     */
+    public void setCplc(CPLC cplc) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -16,7 +16,6 @@
 package com.github.devnied.emvnfccard.model.enums;
 
 import java.util.List;
-
 import com.github.devnied.emvnfccard.model.Application;
 
 /**
@@ -24,54 +23,45 @@ import com.github.devnied.emvnfccard.model.Application;
  */
 public enum ApplicationStepEnum implements IKeyEnum {
 
-	/**
-	 * Application not selected
-	 */
-	NOT_SELECTED(0),
-	/**
-	 *  Application selected
-	 */
-	SELECTED(1), 
-	/**
-	 * Application read
-	 */
-	READ(2);
-	
-	/**
-	 * Step key
-	 */
-	private int key;
-	
-	/**
-	 * Constructor
-	 * 
-	 * @param pKey step id
-	 */
-	private ApplicationStepEnum(final int pKey) {
-		key = pKey;
-	}
+    /**
+     * Application not selected
+     */
+    NOT_SELECTED(0),
+    /**
+     *  Application selected
+     */
+    SELECTED(1),
+    /**
+     * Application read
+     */
+    READ(2);
 
-	@Override
-	public int getKey() {
-		return key;
-	}
-	
-	/**
-	 * Check if at least one application step is getter than the specified step
-	 * @param pApplications applications list
-	 * @param pStep step to compare
-	 * @return 
-	 */
-	public static boolean isAtLeast(final List<Application> pApplications, final ApplicationStepEnum pStep){
-		boolean ret = false;
-		if (pApplications != null && pStep != null){
-			for (Application app: pApplications){
-				if (app != null && app.getReadingStep() != null && app.getReadingStep().key >= pStep.getKey()){
-					ret = true;
-				}
-			}
-		}
-		return ret;
-	}
+    /**
+     * Step key
+     */
+    private int key;
 
+    /**
+     * Constructor
+     *
+     * @param pKey step id
+     */
+    private ApplicationStepEnum(final int pKey) {
+        key = pKey;
+    }
+
+    @Override
+    public int getKey() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    /**
+     * Check if at least one application step is getter than the specified step
+     * @param pApplications applications list
+     * @param pStep step to compare
+     * @return
+     */
+    public static boolean isAtLeast(final List<Application> pApplications, final ApplicationStepEnum pStep) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -15,36 +15,30 @@ package com.github.devnied.emvnfccard.iso7816emv;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import java.util.Arrays;
 
 public final class ByteArrayWrapper {
 
-	private final byte[] data;
-	private final int hashcode;
+    private final byte[] data;
 
-	private ByteArrayWrapper(final byte[] data) {
-		this.data = data;
-		hashcode = Arrays.hashCode(data);
-	}
+    private final int hashcode;
 
-	public static ByteArrayWrapper wrapperAround(final byte[] data) {
-		if (data == null) {
-			throw new NullPointerException();
-		}
-		return new ByteArrayWrapper(data);
-	}
+    private ByteArrayWrapper(final byte[] data) {
+        this.data = data;
+        hashcode = Arrays.hashCode(data);
+    }
 
-	@Override
-	public boolean equals(final Object other) {
-		if (!(other instanceof ByteArrayWrapper)) {
-			return false;
-		}
-		return Arrays.equals(data, ((ByteArrayWrapper) other).data);
-	}
+    public static ByteArrayWrapper wrapperAround(final byte[] data) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	@Override
-	public int hashCode() {
-		return hashcode;
-	}
+    @Override
+    public boolean equals(final Object other) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

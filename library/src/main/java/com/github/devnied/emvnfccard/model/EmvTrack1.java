@@ -21,153 +21,151 @@ import java.util.Date;
  * Track 1 data
  *
  * @author MILLAU julien
- *
  */
 public class EmvTrack1 extends AbstractData {
 
-	/**
-	 * Generated serial UID
-	 */
-	private static final long serialVersionUID = 6619730513813482135L;
+    /**
+     * Generated serial UID
+     */
+    private static final long serialVersionUID = 6619730513813482135L;
 
-	/**
-	 * Raw track 1 data
-	 */
-	private byte[] raw;
+    /**
+     * Raw track 1 data
+     */
+    private byte[] raw;
 
-	/**
-	 * Format code
-	 */
-	private String formatCode;
+    /**
+     * Format code
+     */
+    private String formatCode;
 
-	/**
-	 * Card number
-	 */
-	private String cardNumber;
+    /**
+     * Card number
+     */
+    private String cardNumber;
 
-	/**
-	 * Expiration date
-	 */
-	private Date expireDate;
+    /**
+     * Expiration date
+     */
+    private Date expireDate;
 
-	/**
-	 * Holder Lastname
-	 */
-	private String holderLastname;
+    /**
+     * Holder Lastname
+     */
+    private String holderLastname;
 
-	/**
-	 * Holder Firstname
-	 */
-	private String holderFirstname;
+    /**
+     * Holder Firstname
+     */
+    private String holderFirstname;
 
-	/**
-	 * Card services
-	 */
-	private Service service;
+    /**
+     * Card services
+     */
+    private Service service;
 
-	/**
-	 * @return the raw
-	 */
-	public byte[] getRaw() {
-		return raw;
-	}
+    /**
+     * @return the raw
+     */
+    public byte[] getRaw() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param raw
-	 *            the raw to set
-	 */
-	public void setRaw(final byte[] raw) {
-		this.raw = raw;
-	}
+    /**
+     * @param raw
+     *            the raw to set
+     */
+    public void setRaw(final byte[] raw) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the cardNumber
-	 */
-	public String getCardNumber() {
-		return cardNumber;
-	}
+    /**
+     * @return the cardNumber
+     */
+    public String getCardNumber() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param cardNumber
-	 *            the cardNumber to set
-	 */
-	public void setCardNumber(final String cardNumber) {
-		this.cardNumber = cardNumber;
-	}
+    /**
+     * @param cardNumber
+     *            the cardNumber to set
+     */
+    public void setCardNumber(final String cardNumber) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the expireDate
-	 */
-	public Date getExpireDate() {
-		return expireDate;
-	}
+    /**
+     * @return the expireDate
+     */
+    public Date getExpireDate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param expireDate
-	 *            the expireDate to set
-	 */
-	public void setExpireDate(final Date expireDate) {
-		this.expireDate = expireDate;
-	}
+    /**
+     * @param expireDate
+     *            the expireDate to set
+     */
+    public void setExpireDate(final Date expireDate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the formatCode
-	 */
-	public String getFormatCode() {
-		return formatCode;
-	}
+    /**
+     * @return the formatCode
+     */
+    public String getFormatCode() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param formatCode
-	 *            the formatCode to set
-	 */
-	public void setFormatCode(final String formatCode) {
-		this.formatCode = formatCode;
-	}
+    /**
+     * @param formatCode
+     *            the formatCode to set
+     */
+    public void setFormatCode(final String formatCode) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the holderLastname
-	 */
-	public String getHolderLastname() {
-		return holderLastname;
-	}
+    /**
+     * @return the holderLastname
+     */
+    public String getHolderLastname() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param holderLastname
-	 *            the holderLastname to set
-	 */
-	public void setHolderLastname(final String holderLastname) {
-		this.holderLastname = holderLastname;
-	}
+    /**
+     * @param holderLastname
+     *            the holderLastname to set
+     */
+    public void setHolderLastname(final String holderLastname) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the holderFirstname
-	 */
-	public String getHolderFirstname() {
-		return holderFirstname;
-	}
+    /**
+     * @return the holderFirstname
+     */
+    public String getHolderFirstname() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param holderFirstname
-	 *            the holderFirstname to set
-	 */
-	public void setHolderFirstname(final String holderFirstname) {
-		this.holderFirstname = holderFirstname;
-	}
+    /**
+     * @param holderFirstname
+     *            the holderFirstname to set
+     */
+    public void setHolderFirstname(final String holderFirstname) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the service
-	 */
-	public Service getService() {
-		return service;
-	}
+    /**
+     * @return the service
+     */
+    public Service getService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param service
-	 *            the service to set
-	 */
-	public void setService(final Service service) {
-		this.service = service;
-	}
-
+    /**
+     * @param service
+     *            the service to set
+     */
+    public void setService(final Service service) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

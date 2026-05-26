@@ -17,54 +17,52 @@ package com.github.devnied.emvnfccard.model.enums;
 
 /**
  * Transaction type
- * 
+ *
  * @author Millau Julien
- * 
  */
 public enum TransactionTypeEnum implements IKeyEnum {
 
-	/**
-	 * '00' for a purchase transaction
-	 */
-	PURCHASE(0x00),
-	/**
-	 * '01' Cash advance
-	 */
-	CASH_ADVANCE(0x01),
-	/**
-	 * '09' for a purchase with cashback
-	 */
-	CASHBACK(0x09),
-	/**
-	 * '20' for a refund transaction
-	 */
-	REFUND(0x20),
-	
-	/**
-	 * Loaded transaction (Geldkarte)
-	 */
-	LOADED(0xFE),
-	/**
-	 * Unloaded transaction (Geldkarte)
-	 */
-	UNLOADED(0xFF);
+    /**
+     * '00' for a purchase transaction
+     */
+    PURCHASE(0x00),
+    /**
+     * '01' Cash advance
+     */
+    CASH_ADVANCE(0x01),
+    /**
+     * '09' for a purchase with cashback
+     */
+    CASHBACK(0x09),
+    /**
+     * '20' for a refund transaction
+     */
+    REFUND(0x20),
+    /**
+     * Loaded transaction (Geldkarte)
+     */
+    LOADED(0xFE),
+    /**
+     * Unloaded transaction (Geldkarte)
+     */
+    UNLOADED(0xFF);
 
-	/**
-	 * Value
-	 */
-	private final int value;
+    /**
+     * Value
+     */
+    private final int value;
 
-	/**
-	 * Constructor using field
-	 * 
-	 * @param value
-	 */
-	private TransactionTypeEnum(final int value) {
-		this.value = value;
-	}
+    /**
+     * Constructor using field
+     *
+     * @param value
+     */
+    private TransactionTypeEnum(final int value) {
+        this.value = value;
+    }
 
-	@Override
-	public int getKey() {
-		return value;
-	}
+    @Override
+    public int getKey() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

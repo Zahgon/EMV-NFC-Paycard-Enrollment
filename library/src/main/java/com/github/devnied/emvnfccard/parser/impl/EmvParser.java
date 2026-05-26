@@ -35,7 +35,6 @@ import fr.devnied.bitlib.BytesUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -51,257 +50,123 @@ import java.util.regex.Pattern;
  * Optimization%20v2-0.pdf
  *
  * @author julien
- *
  */
 public class EmvParser extends AbstractParser {
 
-	/**
-	 * Class Logger
-	 */
-	private static final Logger LOGGER = LoggerFactory.getLogger(EmvParser.class);
+    /**
+     * Class Logger
+     */
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmvParser.class);
 
-	/**
-	 * Default EMV pattern
-	 */
-	private static final Pattern PATTERN = Pattern.compile(".*");
+    /**
+     * Default EMV pattern
+     */
+    private static final Pattern PATTERN = Pattern.compile(".*");
 
-	/**
-	 * Default constructor
-	 *
-	 * @param pTemplate
-	 *            parser template
-	 */
-	public EmvParser(EmvTemplate pTemplate) {
-		super(pTemplate);
-	}
+    /**
+     * Default constructor
+     *
+     * @param pTemplate
+     *            parser template
+     */
+    public EmvParser(EmvTemplate pTemplate) {
+        super(pTemplate);
+    }
 
-	@Override
-	public Pattern getId() {
-		return PATTERN;
-	}
+    @Override
+    public Pattern getId() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	@Override
-	public boolean parse(Application pApplication) throws CommunicationException {
-		return extractPublicData(pApplication);
-	}
+    @Override
+    public boolean parse(Application pApplication) throws CommunicationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Read public card data from parameter AID
-	 *
-	 * @param pApplication
-	 *            application data
-	 * @return true if succeed false otherwise
-	 * @throws CommunicationException communication error
-	 */
-	protected boolean extractPublicData(final Application pApplication) throws CommunicationException {
-		boolean ret = false;
-		// Select AID
-		byte[] data = selectAID(pApplication.getAid());
-		// check response
-		// Add SW_6285 to fix Interact issue
-		if (ResponseUtils.contains(data, SwEnum.SW_9000, SwEnum.SW_6285)) {
-			// Update reading state
-			pApplication.setReadingStep(ApplicationStepEnum.SELECTED);
-			// Parse select response
-			ret = parse(data, pApplication);
-			if (ret) {
-				// Get AID
-				String aid = BytesUtils.bytesToStringNoSpace(TlvUtil.getValue(data, EmvTags.DEDICATED_FILE_NAME));
-				String applicationLabel = extractApplicationLabel(data);
-				if (applicationLabel == null) {
-					applicationLabel = pApplication.getApplicationLabel();
-				}
-				if (LOGGER.isDebugEnabled()) {
-					LOGGER.debug("Application label:" + applicationLabel + " with Aid:" + aid);
-				}
-				template.get().getCard().setType(findCardScheme(aid, template.get().getCard().getCardNumber()));
-				pApplication.setAid(BytesUtils.fromString(aid));
-				pApplication.setApplicationLabel(applicationLabel);
-				pApplication.setLeftPinTry(getLeftPinTry());
-				pApplication.setTransactionCounter(getTransactionCounter());
-				template.get().getCard().setState(CardStateEnum.ACTIVE);
-			}
-		}
-		return ret;
-	}
+    /**
+     * Read public card data from parameter AID
+     *
+     * @param pApplication
+     *            application data
+     * @return true if succeed false otherwise
+     * @throws CommunicationException communication error
+     */
+    protected boolean extractPublicData(final Application pApplication) throws CommunicationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to find the real card scheme
-	 *
-	 * @param pAid
-	 *            card complete AID
-	 * @param pCardNumber
-	 *            card number
-	 * @return card scheme
-	 */
-	protected EmvCardScheme findCardScheme(final String pAid, final String pCardNumber) {
-		EmvCardScheme type = EmvCardScheme.getCardTypeByAid(pAid);
-		// Get real type for french card
-		if (type == EmvCardScheme.CB) {
-			type = EmvCardScheme.getCardTypeByCardNumber(pCardNumber);
-			if (type != null) {
-				LOGGER.debug("Real type:" + type.getName());
-			}
-		}
-		return type;
-	}
+    /**
+     * Method used to find the real card scheme
+     *
+     * @param pAid
+     *            card complete AID
+     * @param pCardNumber
+     *            card number
+     * @return card scheme
+     */
+    protected EmvCardScheme findCardScheme(final String pAid, final String pCardNumber) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    /**
+     * Method used to parse EMV card
+     *
+     * @param pSelectResponse
+     *            select response data
+     * @param pApplication
+     *            application selected
+     * @return true if the parsing succeed false otherwise
+     * @throws CommunicationException communication error
+     */
+    protected boolean parse(final byte[] pSelectResponse, final Application pApplication) throws CommunicationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    /**
+     * Method used to extract commons card data
+     *
+     * @param pGpo
+     *            global processing options response
+     * @return true if the extraction succeed
+     * @throws CommunicationException communication error
+     */
+    protected boolean extractCommonsCardData(final byte[] pGpo) throws CommunicationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * Method used to parse EMV card
-	 *
-	 * @param pSelectResponse
-	 *            select response data
-	 * @param pApplication
-	 *            application selected
-	 * @return true if the parsing succeed false otherwise
-	 * @throws CommunicationException communication error
-	 */
-	protected boolean parse(final byte[] pSelectResponse, final Application pApplication) throws CommunicationException {
-		boolean ret = false;
-		// Get TLV log entry
-		byte[] logEntry = getLogEntry(pSelectResponse);
-		// Get PDOL
-		byte[] pdol = TlvUtil.getValue(pSelectResponse, EmvTags.PDOL);
-		// Send GPO Command
-		byte[] gpo = getGetProcessingOptions(pdol);
-		// Extract Bank data
-		extractBankData(pSelectResponse);
+    /**
+     * Extract list of application file locator from Afl response
+     *
+     * @param pAfl
+     *            AFL data
+     * @return list of AFL
+     */
+    protected List<Afl> extractAfl(final byte[] pAfl) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-		// Check empty PDOL
-		if (!ResponseUtils.isSucceed(gpo)) {
-			if (pdol != null) {
-				gpo = getGetProcessingOptions(null);
-			}
+    /**
+     * Method used to create GPO command and execute it
+     *
+     * @param pPdol
+     *            PDOL raw data
+     * @return return data
+     * @throws CommunicationException communication error
+     */
+    protected byte[] getGetProcessingOptions(final byte[] pPdol) throws CommunicationException {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-			// Check response
-			if (pdol == null || !ResponseUtils.isSucceed(gpo)) {
-				// Try to read EF 1 and record 1
-				gpo = template.get().getProvider().transceive(new CommandApdu(CommandEnum.READ_RECORD, 1, 0x0C, 0).toBytes());
-				if (!ResponseUtils.isSucceed(gpo)) {
-					return false;
-				}
-			}
-		}
-		// Update Reading state
-		pApplication.setReadingStep(ApplicationStepEnum.READ);
-
-		// Extract commons card data (number, expire date, ...)
-		if (extractCommonsCardData(gpo)) {
-			// Extract log entry
-			pApplication.setListTransactions(extractLogEntry(logEntry));
-			ret = true;
-		}
-
-		return ret;
-	}
-
-	/**
-	 * Method used to extract commons card data
-	 *
-	 * @param pGpo
-	 *            global processing options response
-	 * @return true if the extraction succeed
-	 * @throws CommunicationException communication error
-	 */
-	protected boolean extractCommonsCardData(final byte[] pGpo) throws CommunicationException {
-		boolean ret = false;
-		// Extract data from Message Template 1
-		byte data[] = TlvUtil.getValue(pGpo, EmvTags.RESPONSE_MESSAGE_TEMPLATE_1);
-		if (data != null) {
-			data = ArrayUtils.subarray(data, 2, data.length);
-		} else { // Extract AFL data from Message template 2
-			ret = extractTrackData(template.get().getCard(), pGpo);
-			if (!ret) {
-				data = TlvUtil.getValue(pGpo, EmvTags.APPLICATION_FILE_LOCATOR);
-			} else {
-				extractCardHolderName(pGpo);
-			}
-		}
-
-		if (data != null) {
-			// Extract Afl
-			List<Afl> listAfl = extractAfl(data);
-			// for each AFL
-			for (Afl afl : listAfl) {
-				// check all records
-				for (int index = afl.getFirstRecord(); index <= afl.getLastRecord(); index++) {
-					byte[] info = template.get().getProvider()
-							.transceive(new CommandApdu(CommandEnum.READ_RECORD, index, afl.getSfi() << 3 | 4, 0).toBytes());
-					// Extract card data
-					if (ResponseUtils.isSucceed(info)) {
-						extractCardHolderName(info);
-						if (extractTrackData(template.get().getCard(), info)) {
-							return true;
-						}
-					}
-				}
-			}
-		}
-		return ret;
-	}
-
-
-	/**
-	 * Extract list of application file locator from Afl response
-	 *
-	 * @param pAfl
-	 *            AFL data
-	 * @return list of AFL
-	 */
-	protected List<Afl> extractAfl(final byte[] pAfl) {
-		List<Afl> list = new ArrayList<Afl>();
-		ByteArrayInputStream bai = new ByteArrayInputStream(pAfl);
-		while (bai.available() >= 4) {
-			Afl afl = new Afl();
-			afl.setSfi(bai.read() >> 3);
-			afl.setFirstRecord(bai.read());
-			afl.setLastRecord(bai.read());
-			afl.setOfflineAuthentication(bai.read() == 1);
-			list.add(afl);
-		}
-		return list;
-	}
-
-	/**
-	 * Method used to create GPO command and execute it
-	 *
-	 * @param pPdol
-	 *            PDOL raw data
-	 * @return return data
-	 * @throws CommunicationException communication error
-	 */
-	protected byte[] getGetProcessingOptions(final byte[] pPdol) throws CommunicationException {
-		// List Tag and length from PDOL
-		List<TagAndLength> list = TlvUtil.parseTagAndLength(pPdol);
-		ByteArrayOutputStream out = new ByteArrayOutputStream();
-		try {
-			out.write(EmvTags.COMMAND_TEMPLATE.getTagBytes()); // COMMAND
-			// TEMPLATE
-			out.write(TlvUtil.getLength(list)); // ADD total length
-			for (TagAndLength tl : list) {
-				out.write(template.get().getTerminal().constructValue(tl));
-			}
-		} catch (IOException ioe) {
-			LOGGER.error("Construct GPO Command:" + ioe.getMessage(), ioe);
-		}
-		return template.get().getProvider().transceive(new CommandApdu(CommandEnum.GPO, out.toByteArray(), 0).toBytes());
-	}
-
-	/**
-	 * Method used to extract track data from response
-	 *
-	 * @param pEmvCard
-	 *            Card data
-	 * @param pData
-	 *            data send by card
-	 * @return true if track 1 or track 2 can be read
-	 */
-	protected boolean extractTrackData(final EmvCard pEmvCard, final byte[] pData) {
-		template.get().getCard().setTrack1(TrackUtils.extractTrack1Data(TlvUtil.getValue(pData, EmvTags.TRACK1_DATA)));
-		template.get().getCard().setTrack2(TrackUtils.extractTrack2EquivalentData(TlvUtil.getValue(pData, EmvTags.TRACK_2_EQV_DATA, EmvTags.TRACK2_DATA)));
-		return pEmvCard.getTrack1() != null || pEmvCard.getTrack2() != null;
-	}
-
+    /**
+     * Method used to extract track data from response
+     *
+     * @param pEmvCard
+     *            Card data
+     * @param pData
+     *            data send by card
+     * @return true if track 1 or track 2 can be read
+     */
+    protected boolean extractTrackData(final EmvCard pEmvCard, final byte[] pData) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

@@ -21,93 +21,91 @@ import java.util.Date;
  * Track 2 data
  *
  * @author MILLAU julien
- *
  */
 public class EmvTrack2 extends AbstractData {
 
-	/**
-	 * Generated serial UID
-	 */
-	private static final long serialVersionUID = -2906133619803198319L;
+    /**
+     * Generated serial UID
+     */
+    private static final long serialVersionUID = -2906133619803198319L;
 
-	/**
-	 * Raw track 2 data
-	 */
-	private byte[] raw;
+    /**
+     * Raw track 2 data
+     */
+    private byte[] raw;
 
-	/**
-	 * Card number
-	 */
-	private String cardNumber;
+    /**
+     * Card number
+     */
+    private String cardNumber;
 
-	/**
-	 * Expiration date
-	 */
-	private Date expireDate;
+    /**
+     * Expiration date
+     */
+    private Date expireDate;
 
-	/**
-	 * Card services
-	 */
-	private Service service;
+    /**
+     * Card services
+     */
+    private Service service;
 
-	/**
-	 * @return the raw
-	 */
-	public byte[] getRaw() {
-		return raw;
-	}
+    /**
+     * @return the raw
+     */
+    public byte[] getRaw() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param raw
-	 *            the raw to set
-	 */
-	public void setRaw(final byte[] raw) {
-		this.raw = raw;
-	}
+    /**
+     * @param raw
+     *            the raw to set
+     */
+    public void setRaw(final byte[] raw) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the cardNumber
-	 */
-	public String getCardNumber() {
-		return cardNumber;
-	}
+    /**
+     * @return the cardNumber
+     */
+    public String getCardNumber() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param cardNumber
-	 *            the cardNumber to set
-	 */
-	public void setCardNumber(final String cardNumber) {
-		this.cardNumber = cardNumber;
-	}
+    /**
+     * @param cardNumber
+     *            the cardNumber to set
+     */
+    public void setCardNumber(final String cardNumber) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the expireDate
-	 */
-	public Date getExpireDate() {
-		return expireDate;
-	}
+    /**
+     * @return the expireDate
+     */
+    public Date getExpireDate() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param expireDate
-	 *            the expireDate to set
-	 */
-	public void setExpireDate(final Date expireDate) {
-		this.expireDate = expireDate;
-	}
+    /**
+     * @param expireDate
+     *            the expireDate to set
+     */
+    public void setExpireDate(final Date expireDate) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @return the service
-	 */
-	public Service getService() {
-		return service;
-	}
+    /**
+     * @return the service
+     */
+    public Service getService() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	/**
-	 * @param service
-	 *            the service to set
-	 */
-	public void setService(final Service service) {
-		this.service = service;
-	}
-
+    /**
+     * @param service
+     *            the service to set
+     */
+    public void setService(final Service service) {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }

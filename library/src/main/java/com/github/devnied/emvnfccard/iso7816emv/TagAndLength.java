@@ -30,40 +30,36 @@ package com.github.devnied.emvnfccard.iso7816emv;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 import java.util.Arrays;
 
 /**
- * 
  * @author sasc
  */
 public class TagAndLength {
-	private ITag tag;
-	private int length;
 
-	public TagAndLength(final ITag tag, final int length) {
-		this.tag = tag;
-		this.length = length;
-	}
+    private ITag tag;
 
-	public ITag getTag() {
-		return tag;
-	}
+    private int length;
 
-	public int getLength() {
-		return length;
-	}
+    public TagAndLength(final ITag tag, final int length) {
+        this.tag = tag;
+        this.length = length;
+    }
 
-	public byte[] getBytes() {
-		byte[] tagBytes = tag.getTagBytes();
-		byte[] tagAndLengthBytes = Arrays.copyOf(tagBytes, tagBytes.length + 1);
-		tagAndLengthBytes[tagAndLengthBytes.length - 1] = (byte) length;
-		return tagAndLengthBytes;
-	}
+    public ITag getTag() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
-	@Override
-	public String toString() {
-		return tag.toString() + " length: " + length;
-	}
+    public int getLength() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 
+    public byte[] getBytes() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
+
+    @Override
+    public String toString() {
+        throw new UnsupportedOperationException("STUB: not implemented");
+    }
 }
